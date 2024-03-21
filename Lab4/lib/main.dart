@@ -26,25 +26,25 @@ class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyHomePage> createState() => MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _likeCount = 447;
-  bool _isLiked = false;
+class MyHomePageState extends State<MyHomePage> {
+  int likeCount = 447;
+  bool isLiked = false;
 
-  void _toggleLike() {
+  void toggleLike() {
     setState(() {
-      _isLiked = !_isLiked;
-      if (_isLiked) {
-        _likeCount++;
+      isLiked = !isLiked;
+      if (isLiked) {
+        likeCount++;
       } else {
-        _likeCount--;
+        likeCount--;
       }
     });
   }
 
-  void _callNumber() async {
+  void callNumber() async {
     final Uri url = Uri(
       scheme: 'tel',
       path: "999 888 7777",
@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  void _openMap() async {
+  void openMap() async {
     final availableMaps = await MapLauncher.installedMaps;
     availableMaps.forEach((map) {
       print(map.icon);
@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  void _share() {
+  void share() {
     const String text = 'Посетите общежитие №20';
     const String url = 'https://www.kubsau.ru/';
     Share.share('$text\n$url');
@@ -122,13 +122,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       IconButton(
-                        onPressed: _toggleLike,
+                        onPressed: toggleLike,
                         icon: Icon(
-                            _isLiked ? Icons.favorite : Icons.favorite_border),
-                        color: _isLiked ? Colors.red : Colors.grey,
+                            isLiked ? Icons.favorite : Icons.favorite_border),
+                        color: isLiked ? Colors.red : Colors.grey,
                       ),
                       Text(
-                        '$_likeCount', // Количество лайков
+                        'likeCount', // Количество лайков
                         style: const TextStyle(
                           fontSize: 16,
                         ),
@@ -142,7 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Column(
                         children: [
                           IconButton(
-                            onPressed: _callNumber,
+                            onPressed: callNumber,
                             icon: const Icon(Icons.phone, color: Colors.green),
                           ),
                           const Text(
@@ -154,7 +154,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Column(
                         children: [
                           IconButton(
-                            onPressed: _openMap,
+                            onPressed: openMap,
                             icon: const Icon(Icons.directions,
                                 color: Colors.green),
                           ),
@@ -167,7 +167,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Column(
                         children: [
                           IconButton(
-                            onPressed: _share,
+                            onPressed: share,
                             icon: const Icon(Icons.share, color: Colors.green),
                           ),
                           const Text(
