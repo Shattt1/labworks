@@ -31,27 +31,27 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyHomePage> createState() => MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  int counter = 0;
 
-  void _incrementCounter() {
+  void incrementcount() {
     setState(() {
-      _counter++;
+      counter++;
     });
   }
 
-  void _decrementCounter() {
+  void decrementcount() {
     setState(() {
-      _counter--;
+      counter--;
     });
   }
 
-  void _resetCounter() {
+  void resetcount() {
     setState(() {
-      _counter = 0;
+      counter = 0;
     });
   }
 
@@ -76,17 +76,17 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
-                  onPressed: _decrementCounter,
+                  onPressed: decrementcount,
                   icon: Icon(Icons.remove),
                 ),
                 IconButton(
-                  onPressed: _incrementCounter,
+                  onPressed: incrementcount,
                   icon: Icon(Icons.add),
                 ),
               ],
             ),
             TextButton(
-              onPressed: _resetCounter,
+              onPressed: resetcount,
               child: Text(
                 'Сбросить',
                 style: TextStyle(color: Colors.grey),
